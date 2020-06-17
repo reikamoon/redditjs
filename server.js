@@ -1,6 +1,20 @@
 // Initialize express
 const express = require('express')
 const app = express()
+require('./controllers/posts.js')(app);
+
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+
+// Use Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Set db
+require('./data/reddit-db');
+
+// Add after body parser initialization!
+app.use(expressValidator());
 
 // require handlebars
 const exphbs = require('express-handlebars');
