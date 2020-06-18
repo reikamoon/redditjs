@@ -2,10 +2,10 @@
 const mongoose = require("mongoose");
 assert = require("assert");
 
-const url = "mongodb://localhost/reddit-db";
+const url = "mongodb://localhost:27017/reddit-db";
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  "mongodb://localhost/reddit-db",
+  url,
   { useNewUrlParser: true }
 );
 console.log("Database Successfully Connected")

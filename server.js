@@ -1,7 +1,7 @@
 // Initialize express
 const express = require('express')
 const app = express()
-require('./controllers/posts.js')(app);
+
 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
@@ -31,6 +31,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 // Use handlebars to render
 app.set('view engine', 'handlebars');
 
+require('./controllers/posts.js')(app);
+
 // Choose a port to listen on
 const port = process.env.PORT || 3000;
 
@@ -38,3 +40,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('App listening on port 3000!')
 })
+
+module.exports = app;
