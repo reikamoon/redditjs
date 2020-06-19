@@ -1,10 +1,16 @@
+require('dotenv').config();
 // Initialize express
 const express = require('express')
-const app = express()
-
+var app = express();
 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+
+app.use(cookieParser()); // Add this after you initialize express.
+
 
 // Use Body Parser
 app.use(bodyParser.json());
@@ -33,6 +39,7 @@ app.set('view engine', 'handlebars');
 
 require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/auth.js')(app);
 
 // Choose a port to listen on
 const port = process.env.PORT || 3000;
