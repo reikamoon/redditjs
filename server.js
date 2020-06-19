@@ -27,11 +27,12 @@ require('./data/reddit-db');
 app.use(expressValidator());
 
 // Use "main" as our default layout
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', hbs.engine);
 // Use handlebars to render
 app.set('view engine', 'handlebars');
 
 require('./controllers/posts.js')(app);
+require('./controllers/comments.js')(app);
 
 // Choose a port to listen on
 const port = process.env.PORT || 3000;
