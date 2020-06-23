@@ -8,7 +8,10 @@ const PostSchema = new Schema({
   url: { type: String, required: true },
   summary: { type: String, default: "Summary"},
   subreddit: { type: String, required: true },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+  upVotes : [{ type: Schema.Types.ObjectId, ref: "User"}],
+  downVotes : [{ type: Schema.Types.ObjectId, ref: "User"}],
+  voteScore : {type: Number},
 });
 
 module.exports = mongoose.model("Post", PostSchema);

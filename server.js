@@ -9,6 +9,8 @@ const expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
+app.use(express.static('public'));
+
 app.use(cookieParser()); // Add this after you initialize express.
 
 
