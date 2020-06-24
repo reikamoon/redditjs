@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $(".vote-up").submit(function(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     var postId = $(this).data("id");
     $.ajax({
@@ -8,15 +8,16 @@ $(document).ready(function() {
       url: "posts/" + postId + "/vote-up",
       success: function(data) {
         console.log("voted up!");
+          location.reload()
       },
       error: function(err) {
         console.log(err.messsage);
       }
-    });
+    })
   });
 
   $(".vote-down").submit(function(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     var postId = $(this).data("id");
     $.ajax({
@@ -29,5 +30,6 @@ $(document).ready(function() {
         console.log(err.messsage);
       }
     });
+    location.reload()
   });
 });

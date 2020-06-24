@@ -78,7 +78,7 @@ module.exports = app => {
         });
 
       // VOTING
-      app.put("/posts/:id/vote-up", function(req, res) {
+    app.put("/posts/:id/vote-up", function(req, res) {
       Post.findById(req.params.id).exec(function(err, post) {
         post.upVotes.push(req.user._id);
         post.voteScore = post.voteScore + 1;
@@ -97,5 +97,5 @@ module.exports = app => {
         res.status(200);
       });
     });
-    
+
   };

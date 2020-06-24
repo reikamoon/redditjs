@@ -6,13 +6,14 @@ module.exports = app => {
   // NEW REPLY
   app.get("/posts/:postId/comments/:commentId/replies/new", (req, res) => {
     let post;
+    const currentUser = req.user;
     Post.findById(req.params.postId)
       .then(p => {
         post = p;
         return Comment.findById(req.params.commentId);
       })
       .then(comment => {
-        res.render("replies-new", { post, comment });
+        res.render("replies-new", { post, comment, currentUser });
       })
       .catch(err => {
         console.log(err.message);

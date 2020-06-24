@@ -11,7 +11,7 @@ const PostSchema = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   upVotes : [{ type: Schema.Types.ObjectId, ref: "User"}],
   downVotes : [{ type: Schema.Types.ObjectId, ref: "User"}],
-  voteScore : {type: Number},
+  voteScore : {type: Number, default: 0},
 });
 
 module.exports = mongoose.model("Post", PostSchema);
